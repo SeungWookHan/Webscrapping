@@ -1,0 +1,8 @@
+/학교/학년/반/학생[2]
+//*[@학번="1-1-5"] -> 이와같이 unique 키를 통해 접근 하게 함
+
+//*[@id="account"]/a -> 네이버 로그인 버튼의 경우
+/html/body/div[2]/div[3]/div[3]/div/div[2]/a
+
+/html/body/div/span/....login/
+//*[id="login"] -> 슬래쉬 2번이면 '하위 전부 다' 찾기
