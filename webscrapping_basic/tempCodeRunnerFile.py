@@ -1,1 +1,0 @@
-    # if float(rate) >= 4.5 and
