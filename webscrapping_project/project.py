@@ -1,4 +1,5 @@
 import requests
+import re
 from bs4 import BeautifulSoup
 headers = {
     "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.102 Safari/537.36",
@@ -63,14 +64,6 @@ def scrape_headline_news():
         link = url + news.find("a")["href"]
         print_news(idx, title, link)
 
-# [IT 뉴스]
-# 1. 무슨 무슨 일이
-# (링크: https://)
-# 2. 무슨 무슨 일이
-# (링크: https://)
-# 3. 무슨 무슨 일이
-# (링크: https://)
-
 
 def scrape_it_news():
     print("[IT 뉴스]")
@@ -88,9 +81,32 @@ def scrape_it_news():
         title = a_tag.get_text().strip()
         link = a_tag["href"]
         print_news(idx, title, link)
+# [오늘의 영어 회화]
+# (영어 지문)
+# ~~~~
+# (한글 지문)
+# ~~~~
+
+
+def scrape_english():
+    print("[오늘의 영어 회화]")
+    url = "http://www.hackers.co.kr/?c=s_eng/eng_contents/I_others_english&keywd=haceng_submain_lnb_eng_I_others_english&logger_kw=haceng_submain_lnb_eng_I_others_english#;"
+    soup = create_soup(url)
+
+    sentences = soup.find_all("div", attrs={"id": re.compile("^conv_kor_t")})
+    print("(영어 지문)")
+    # 전체 길이 가정 / 2 (//인 이유는 몫만 반환하기 위함)
+    for sentence in sentences[len(sentences)//2:]:  # index 기준 4~7까지(5~8)
+        print(sentence.get_text().strip())
+    print()
+    print("(한글 지문)")
+    for sentence in sentences[:len(sentences)//2]:  # index 기준 0~3까지(1~4)
+        print(sentence.get_text().strip())
+    print()
 
 
 if __name__ == "__main__":
-    # scrape_weather()  # 오늘의 날씨 정보 가져오기
-    # scrape_headline_news()
+    scrape_weather()  # 오늘의 날씨 정보 가져오기
+    scrape_headline_news()
     scrape_it_news()
+    scrape_english()
