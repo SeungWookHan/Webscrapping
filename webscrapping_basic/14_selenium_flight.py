@@ -32,9 +32,9 @@ browser.find_element_by_xpath("//*[@id='recommendationList']/ul/li[1]").click()
 browser.find_element_by_link_text("항공권 검색").click()
 
 try:
-elem = WebDriverWait(browser, 10).until(EC.presence_of_element_located(
-    (By.XPATH, "//*[@id='content']/div[2]/div/div[4]/ul/li[1]")))  # 튜플로 줌, xpath 외에도 class 등 활용 가능
-print(elem.text)  # 첫번째 결과
+    elem = WebDriverWait(browser, 10).until(EC.presence_of_element_located(
+        (By.XPATH, "//*[@id='content']/div[2]/div/div[4]/ul/li[1]")))  # 튜플로 줌, xpath 외에도 class 등 활용 가능
+    print(elem.text)  # 첫번째 결과
 finally:
     browser.quit()
 
