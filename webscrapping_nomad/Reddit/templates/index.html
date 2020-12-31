@@ -1,0 +1,47 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>
+    Nomad News |
+    
+      Popular
+    
+  </title>
+  <link href="https://andybrewer.github.io/mvp/mvp.css" rel="stylesheet"></link>
+</head>
+
+<body>
+  <header>
+    <h1>Nomad News</h1>
+    <div>
+      Order by:
+      {% if state == 0 %}
+        <strong>Popular</strong>
+        <a href="/?order_by=new">New</a>
+      {% else %}
+        <a href="/?order_by=popular">Popular</a>
+        <strong>New</strong>
+      {% endif %}
+    </div>
+  </header>
+  <main>
+      {% for data in db.values() %}
+      <div>
+        <div>
+          <a href="{{data[0]}}">
+            <h3>{{data[1]}}</h3>
+          </a>
+          (<a href="{{data[2]}}"target="_blank">{{data[2]}}</a>)
+        </div>
+        <div>
+            {{data[4]}} points | By: {{data[3]}} | {{data[5]}} comments
+        </div>
+      </div>
+      <hr />
+      {% endfor %}
+  </main>
+</body>
+
+</html>

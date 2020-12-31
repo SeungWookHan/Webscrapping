@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>
+        Reddit Reader
+    </title>
+    <link href="https://andybrewer.github.io/mvp/mvp.css" rel="stylesheet">
+    </link>
+</head>
+
+<body>
+    <header>
+        <h1><a href="/">Reddit Reader</a></h1>
+        <h3>Reading: {{kinds}} </h3>
+    </header>
+    <main>
+        {% for data in datas %}
+        <div>
+            <h3><a href="{{data['link']}}" target="_blank">{{data['title']}}</a></h3>
+            <h4>{{data['vote']}} upvotes · {{data['kind']}}</h4>
+            <hr />
+        </div>
+        {% endfor %}
+
+    </main>
+</body>
+
+</html>

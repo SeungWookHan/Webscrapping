@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <link href="https://andybrewer.github.io/mvp/mvp.css" rel="stylesheet">
+  </link>
+</head>
+
+<body>
+  <header>
+    <h1>{{db['title']}}</h1>
+    <div>
+      {{db['points']}} points | By {{db['author']}} | <a href="{{db['url']}}" target="_blank">{{db['url']}}</a>
+    </div>
+  </header>
+  <main>
+    {% for comment in comment_db.values() %}
+    {% if comment == '[deleted]' %}
+    <div>
+      {{comment}}
+    </div>
+    <hr />
+    {% else %}
+    <div>
+      <strong>{{comment[0]}}:</strong>
+      <p>{{comment[1]|safe}} </p>
+    </div>
+    <hr />
+    {% endif %}
+    {% endfor %}
+  </main>
+</body>
+
+</html>
