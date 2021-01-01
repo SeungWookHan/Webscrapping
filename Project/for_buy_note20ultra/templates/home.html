@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>
+    최저가 노트20 찾기
+  </title>
+  <link href="https://andybrewer.github.io/mvp/mvp.css" rel="stylesheet"></link>
+</head>
+
+<body>
+  <header>
+    <h1><a href="/">하나의 폰 구매를 응원합니다.</a></h1>
+    <h3>{{datas|length}} phones found. </h3>
+    <h4><a href="/export?term={{job}}" target="_self">Export to CSV</a></h4>
+    <h5><a href="/" target="_self">REFRESH</a></h5>
+  </header>
+  <main>
+      {% for data in datas %}
+      <div>
+          <h3>{{data["price"]}}</h3>
+          <h4><a href="{{data["link"]}}" target="_blank">Find</a></h4>
+        <hr />
+      </div>
+      {% endfor %}
+  </main>
+</body>
+
+</html>
